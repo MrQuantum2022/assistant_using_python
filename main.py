@@ -100,8 +100,13 @@ if __name__=="__main__":
 
         elif 'initiate arduino' in query:
             speak("ok boss!initiating arduino")
-            blender_dir = 'C:\private files\Arduino'
-            os.startfile(os.path.join(blender_dir,'arduino'))
+            arduino_dir = 'C:\\private files\\Arduino'
+            os.startfile(os.path.join(arduino_dir,'arduino'))
+
+        elif 'open git bash' in query:
+            speak("ok boss!initiating git bash")
+            git_dir = 'C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Git'
+            os.startfile(os.path.join(git_dir,'Git Bash'))
 
         elif 'open edge' in query:
             speak("ok boss!starting edge")
