@@ -1,0 +1,30 @@
+pip install pywhatkit
+
+#using pywhatkit to access whatsapp
+
+import pywhatkit as pwk
+ 
+# using Exception Handling to avoid unexpected errors
+try:
+     # sending message in Whatsapp in India so using Indian dial code (+91)
+     pwk.sendwhatmsg("+91XXXXXX5980", "Hi, how are you?", 20, 34)
+     pwk.sendwhatmsg("+91XXXXXX5980", "Hi", 18, 15, True, 5)
+
+     pwk.sendwhats_image("Group_Name", "Media/image.png", "Hi")
+ 
+     pwk.sendwhats_image("Name", "Media/images.png")
+
+     pwk.sendwhatmsg_to_group("Group_Name", "Hey Guys! How's everybody?", 11, 0)
+ 
+     # it is similar to sending a message to a single person but here we are sending
+     the message in a group
+
+     pwk.sendwhatmsg_to_group_instantly("Group_Name", "Hey Guys Again!")
+ 
+     print("Message Sent!") #Prints success message in console
+ 
+     # error message
+except: 
+     print("Error in sending the message")
+
+
