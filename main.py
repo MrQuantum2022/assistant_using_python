@@ -89,7 +89,7 @@ if __name__=="__main__":
             os.startfile(os.path.join(unity_dir,'Unity hub'))
           
 
-        elif 'open my github profile' in query:
+        elif 'github profile' in query:
             speak("here is your github profile page")
             webbrowser.open('https://github.com/MrQuantum2022')
 
