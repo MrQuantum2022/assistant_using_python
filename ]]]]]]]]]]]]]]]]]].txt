@@ -1,0 +1,28 @@
+Git commands-
+1.git status(gives the curent status of your folder)
+2.git add (add the file to staging area)
+3.git add -A(add all the files to the staging area)
+4.git commit(commit your file)
+5.git commit -m ""(commit without vim )
+6.git diff (compares your working tree with staging area)
+7.git diff --staged (compares your staging area to last commit)
+8.git log(gives the info of commit history)
+9.git log -p -(1,2,3...)
+10.git checkout file_name(restore your file to the last last commit)
+11.git commit -a -m (skip the staging area step)
+12.git init(initialize git)
+13.git user.name
+14.git user.email
+15.ls (index your files)
+16.ls -lart (show all the files including hidden files)
+17.touch file_name (add a new file into your folder)
+18.git rm file_name (removes the file)
+19.git rm --cached file_name(transfer the files into untracked area)
+20.git status -s(show all modified files)
+21.git branch (show the available branch )
+22.git branch branch_name (make a new branch)
+23.git checkout branch_name (switch to branch_name)
+24.git checkout -b branch_name (shortcut to make a branch and directly acess it )
+25.
+
+
