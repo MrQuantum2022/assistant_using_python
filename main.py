@@ -62,29 +62,6 @@ def takeCommand():
         return "None"
     return query
 
-def ytCommand():
-
-    r= sr.Recognizer() #recognizer is a class
-    with sr.Microphone() as source:
-        print ("Taking Search Input...")
-        r.pause_threshold = 1
-        r.adjust_for_ambient_noise(source)
-        # r.energy_threshold = 450
-        audio = r.listen(source)#listen is a module in sr
-
-    try:
-        print ("Hold On...")
-        search_title= r.recognize_google(audio,language='en-in')
-        print(f"User said: {search_title}\n")
-    
-    except Exception as e:
-        # print(e)
-        print ("Say that again please...")
-        return "None"
-    return search_title
-  
-
-
 if __name__=="__main__":
     wish()
     casual_command=["what is your name","tell me about you","introduce yourself","what's your name","what should i call you"]
@@ -141,7 +118,7 @@ if __name__=="__main__":
 
         elif 'open youtube' in query:
             speak ("what do you want to search...")
-            search_title= ytCommand().lower()
+            search_title= takeCommand().lower()
             pwtyt.playonyt(search_title)
             speak(f"Opening Youtube and searching {search_title}")
 
