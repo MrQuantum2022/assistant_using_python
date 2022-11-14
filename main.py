@@ -214,7 +214,8 @@ if __name__=="__main__":
             speak("Operation abort!")
             break
         
-        
+        elif 'thanks' in query:
+            speak("You're welcome!serving you my best")
         # elif 'addition' in query:
             
         
