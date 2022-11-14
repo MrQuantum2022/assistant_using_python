@@ -23,6 +23,6 @@ Git commands-
 22.git branch branch_name (make a new branch)
 23.git checkout branch_name (switch to branch_name)
 24.git checkout -b branch_name (shortcut to make a branch and directly acess it )
-25.
+25.git clone link (the entire project will be cloned into my laptop)
 
 

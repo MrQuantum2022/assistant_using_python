@@ -11,7 +11,7 @@ engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 
 engine.setProperty('voice',voices[1].id)
-# engine.setProperty('rate',190)
+engine.setProperty('rate',180)
 engine.setProperty('volume',1.0)
 
 # FUNCTIONS------------------------------------
@@ -208,7 +208,13 @@ if __name__=="__main__":
             speak("Have a nice day.")
             print("Assitant status:Offline")
             break
-        # CALCULATOR TASK-----------------
+        
+        elif 'a**' in query:
+            speak("hey mind your language i am not that kind of assistant")
+            speak("Operation abort!")
+            break
+        
+        
         # elif 'addition' in query:
             
         
