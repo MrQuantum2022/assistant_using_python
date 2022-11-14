@@ -7,11 +7,12 @@ import wikipedia
 import webbrowser
 import os
 
+
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 
 engine.setProperty('voice',voices[1].id)
-engine.setProperty('rate',180)
+engine.setProperty('rate',160)
 engine.setProperty('volume',1.0)
 
 # FUNCTIONS------------------------------------
@@ -40,6 +41,25 @@ def wish():
     else:
         print("Assitant status:Online")
         speak("Good Evening"+ greet_to + suggest )
+
+def send_message():
+    r= sr.Recognizer() #recognizer is a class
+    with sr.Microphone() as source:
+        print ("Listening...")
+        r.pause_threshold = 1
+        r.adjust_for_ambient_noise(source)
+        # r.energy_threshold = 450
+        audio = r.listen(source)
+    try:
+        message = r.recognize_google(audio,language='en-in')
+     # sending message in Whatsapp in India so using Indian dial code (+91)
+        pwtyt.sendwhatmsg("+918755811974",message*15 , 23,56 )
+        print("Message Sent!") #Prints success message in console
+ 
+     # error message
+    except: 
+        print("Error in sending the message")
+
 
 def takeCommand():
 
@@ -84,12 +104,20 @@ def ytCommand():
     return search_title
 
 if __name__=="__main__":
+    
+    
     wish()
-    casual_command=["what is your name","tell me about you","introduce yourself","what's your name","what should i call you"]
+    intro_command=["what is your name","tell me about yourself","introduce yourself","what's your name","what should i call you"]
+    asking_command = ["how are you","how's your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer"]
+
+    reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder ,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!"]
+
+    bad_command = ["fuck","a**","m***********"]
 
     while True:
-
         query = takeCommand().lower()
+
+
         #task section-------------------
         if 'wikipedia' in query:
             
@@ -98,9 +126,6 @@ if __name__=="__main__":
             speak("According to wikipedia")
             print(results)
             speak(results)
-
-        elif 'f***' in query:
-            speak("hey mind your language,i am not that kind of assistant")
 
         elif 'open unity hub' in query:
             speak("Ok boss!initiating OBS studio.")
@@ -146,6 +171,12 @@ if __name__=="__main__":
         elif 'open insta' in query:
             speak("here is your insta profile")
             webbrowser.open('https://www.instagram.com/sub_atomic2004/')
+
+        elif 'send message by whatsapp' in query:
+            speak("Ok Boss!what do you want to send")
+            print("speak you message")
+            send_message()
+            
 
         # MUSIC SECTION---------------------------
 
@@ -204,14 +235,16 @@ if __name__=="__main__":
             service_str = random.choice(service_line)
             speak(service_str)
 
-        elif query in casual_command:
+        elif query in intro_command:
             intro_lines=["My name is 'casual assistant for performing light activity',In short you can call me,CAPLA!","i am CAPLA ,casual assistant for performing light activity",]
             intro_str = random.choice(intro_lines)
             speak(intro_str)
 
 
-        elif 'are you mad ' in query:
+        elif 'are you mad' in query:
             speak("No i am not mad, i guess you are smarter than me")
+            
+            
 
         elif 'the time' in query:
             present_time = datetime.datetime.now().strftime("%H:%M:%S")
@@ -230,16 +263,44 @@ if __name__=="__main__":
             print("Assitant status:Offline")
             break
         
-        elif 'a**' in query:
+        elif query in bad_command:
             speak("hey mind your language i am not that kind of assistant")
-            speak("Operation abort!")
+            speak("Discussion  abort!")
             break
         
-        elif 'thanks' in query:
-            speak("You're welcome!serving you my best")
-            
+        elif query in asking_command[0]:
+            reply = reply_command[0]
+            speak(reply)
+        elif query in asking_command[1]:
+            reply = reply_command[1]
+            speak(reply)
+        elif query in asking_command[2]:
+            reply = reply_command[2]
+            speak(reply)
+        elif query in asking_command[3]:
+            reply = reply_command[3]
+            speak(reply)
+        elif query in asking_command[4]:
+            reply = reply_command[4]
+            speak(reply)
+        elif query in asking_command[5]:
+            reply = reply_command[5]
+            speak(reply)
+        elif query in asking_command[6]:
+            reply = reply_command[6]
+            speak(reply)
+        elif query in asking_command[7]:
+            reply = reply_command[7]
+            speak(reply)
+        elif query in asking_command[8]:
+            reply = reply_command[8]
+            speak(reply)
+        elif query in asking_command[9]:
+            reply = reply_command[9]
+            speak(reply)
 
-        
+        elif 'thanks' in query:
+            speak("You're welcome!i will always be serving you my best")
         # elif 'addition' in query:
             
         
