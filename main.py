@@ -1,6 +1,6 @@
 import pyttsx3
 import datetime
-
+import pywhatkit as pwtyt
 import random
 import speech_recognition as sr
 import wikipedia
@@ -61,16 +61,37 @@ def takeCommand():
         print ("Say that again please...")
         return "None"
     return query
+
+def ytCommand():
+
+    r= sr.Recognizer() #recognizer is a class
+    with sr.Microphone() as source:
+        print ("Taking Search Input...")
+        r.pause_threshold = 1
+        r.adjust_for_ambient_noise(source)
+        # r.energy_threshold = 450
+        audio = r.listen(source)#listen is a module in sr
+
+    try:
+        print ("Hold On...")
+        search_title= r.recognize_google(audio,language='en-in')
+        print(f"User said: {search_title}\n")
+    
+    except Exception as e:
+        # print(e)
+        print ("Say that again please...")
+        return "None"
+    return search_title
   
 
 
 if __name__=="__main__":
     wish()
-    
+    casual_command=["what is your name","tell me about you","introduce yourself","what's your name","what should i call you"]
+
     while True:
 
         query = takeCommand().lower()
-        
         #task section-------------------
         if 'wikipedia' in query:
             
@@ -119,8 +140,10 @@ if __name__=="__main__":
             os.startfile(os.path.join(octave_dir,"octave-launch"))
 
         elif 'open youtube' in query:
-            speak("Opening Youtube")
-            webbrowser.open("youtube.com")
+            speak ("what do you want to search...")
+            search_title= ytCommand().lower()
+            pwtyt.playonyt(search_title)
+            speak(f"Opening Youtube and searching {search_title}")
 
         elif 'open insta' in query:
             speak("here is your insta profile")
@@ -183,7 +206,7 @@ if __name__=="__main__":
             service_str = random.choice(service_line)
             speak(service_str)
 
-        elif 'what is your name' in query:
+        elif query in casual_command:
             intro_lines=["My name is 'casual assistant for performing light activity',In short you can call me,CAPLA!","i am CAPLA ,casual assistant for performing light activity",]
             intro_str = random.choice(intro_lines)
             speak(intro_str)
@@ -216,6 +239,9 @@ if __name__=="__main__":
         
         elif 'thanks' in query:
             speak("You're welcome!serving you my best")
+            
+
+        
         # elif 'addition' in query:
             
         
