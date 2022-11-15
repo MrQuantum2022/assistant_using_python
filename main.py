@@ -217,6 +217,11 @@ if __name__=="__main__":
             speak("ok sir! openinig krita,enjoy painting!")
             print("Opening krita...")
             delay(2)
+
+        elif 'open whatsapp' in query:
+            speak("ok!have a nice chat.")
+            webbrowser.open('https://web.whatsapp.com/')
+            delay(2)
             
         # MUSIC SECTION---------------------------
 
@@ -301,7 +306,7 @@ if __name__=="__main__":
             print("Assitant status:Offline")
             break
         
-        elif query in bad_command:
+        elif 'f***' in query:
             speak("hey mind your language i am not that kind of assistant")
             speak("Discussion  abort!")
             break
