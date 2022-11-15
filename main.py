@@ -56,6 +56,8 @@ def send_message():
     try:
         print("Hold On...")
         message = r.recognize_google(audio,language='en-in')
+        speak(f"Sending {message} to home...")
+
      # sending message in Whatsapp in India so using Indian dial code (+91)
         current_hour = datetime.datetime.now().strftime("%H")
         current_min = datetime.datetime.now().strftime("%M")
@@ -66,7 +68,7 @@ def send_message():
  
      # error message
     except Exception as e: 
-        # print(e)
+        print(e)
         print("Error in sending the message")
 
 def rapid_txt():
@@ -204,7 +206,7 @@ if __name__=="__main__":
             webbrowser.open('https://www.instagram.com/sub_atomic2004/')
             delay(2)
 
-        elif 'send message' in query:
+        elif 'send message to home' in query:
             speak("Ok Boss!what do you want to send")
             print("speak your message...")
             send_message()
@@ -346,7 +348,7 @@ if __name__=="__main__":
             speak("You're welcome!i will always be serving you my best")
 
         elif 'rapid text' in query:
-            speak("Ok Boss!Initialising rapid text protocol")
+            speak("Ok Boss!Initiating rapid text mode")
             speak("what do you want to send...")
             txt = rapid_txt().lower()
             speak("how many times you want to send?")
