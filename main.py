@@ -138,7 +138,7 @@ if __name__=="__main__":
     intro_command=["what is your name","tell me about yourself","introduce yourself","what's your name","what should i call you"]
     asking_command = ["how are you","how's your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer"]
 
-    reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder ,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!"]
+    reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!"]
 
     bad_command = ["f***","a**","m***********"]
 
