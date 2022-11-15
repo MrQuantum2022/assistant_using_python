@@ -20,8 +20,9 @@ engine.setProperty('volume',1.0)
 # FUNCTIONS------------------------------------
 
 def delay(n):
-    time.sleep(n)
     speak("what is my next task")
+    time.sleep(n)
+    
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
@@ -63,7 +64,7 @@ def send_message():
         current_min = datetime.datetime.now().strftime("%M")
         current_hour = int(current_hour)
         current_min = int(current_min)+2
-        pwtyt.sendwhatmsg("+918755811974",message,current_hour,current_min)
+        pwtyt.sendwhatmsg("+919953407271",message,current_hour,current_min)
         print("Message Sent!") #Prints success message in console
  
      # error message
