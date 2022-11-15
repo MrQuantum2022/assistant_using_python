@@ -363,11 +363,20 @@ if __name__=="__main__":
         elif 'thanks' in query:
             speak("You're welcome!i will always be serving you my best")
 
-        elif 'send message racerturtle 0123' in query:
-            speak("Ok Boss!Intialising rapid text protocol")
+        elif 'rapid text' in query:
+            speak("Ok Boss!Initialising rapid text protocol")
+            speak("what do you want to send...")
             txt = rapid_txt().lower()
-            pyautogui.typewrite(txt)
-            pyautogui.press("enter")
+            speak("how many times you want to send?")
+            numOfText = rapid_txt().lower()
+            time.sleep(2)
+            print(f"no of send:{numOfText}")
+            
+            count = 0
+            while count <= 9:
+                pyautogui.typewrite(txt)
+                pyautogui.press("enter")
+                count = count +1
         # elif 'addition' in query:
             
         
