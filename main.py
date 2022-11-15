@@ -221,7 +221,7 @@ if __name__=="__main__":
         elif 'open whatsapp' in query:
             speak("ok!have a nice chat.")
             webbrowser.open('https://web.whatsapp.com/')
-            delay(2)
+            delay(2) 
             
         # MUSIC SECTION---------------------------
 
