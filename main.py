@@ -53,13 +53,18 @@ def send_message():
     try:
         message = r.recognize_google(audio,language='en-in')
      # sending message in Whatsapp in India so using Indian dial code (+91)
-        pwtyt.sendwhatmsg("+918755811974",message*15 , 23,56 )
+        current_hour = datetime.datetime.now().strftime("%H")
+        current_min = datetime.datetime.now().strftime("%M")
+        current_hour = int(current_hour)
+        current_min = int(current_min)+2
+        pwtyt.sendwhatmsg("+918755811974",message,current_hour,current_min)
         print("Message Sent!") #Prints success message in console
  
      # error message
-    except: 
+    except Exception as e: 
+        print(e)
         print("Error in sending the message")
-
+    
 
 def takeCommand():
 
@@ -112,7 +117,7 @@ if __name__=="__main__":
 
     reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder ,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!"]
 
-    bad_command = ["fuck","a**","m***********"]
+    bad_command = ["f***","a**","m***********"]
 
     while True:
         query = takeCommand().lower()
@@ -172,9 +177,9 @@ if __name__=="__main__":
             speak("here is your insta profile")
             webbrowser.open('https://www.instagram.com/sub_atomic2004/')
 
-        elif 'send message by whatsapp' in query:
+        elif 'send message' in query:
             speak("Ok Boss!what do you want to send")
-            print("speak you message")
+            print("speak your message...")
             send_message()
             
 
@@ -299,8 +304,12 @@ if __name__=="__main__":
             reply = reply_command[9]
             speak(reply)
 
+        
+
         elif 'thanks' in query:
             speak("You're welcome!i will always be serving you my best")
+
+        
         # elif 'addition' in query:
             
         
