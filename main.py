@@ -6,6 +6,8 @@ import speech_recognition as sr
 import wikipedia
 import webbrowser
 import os
+import pyautogui
+import time
 
 
 engine = pyttsx3.init('sapi5')
@@ -16,6 +18,10 @@ engine.setProperty('rate',160)
 engine.setProperty('volume',1.0)
 
 # FUNCTIONS------------------------------------
+
+def delay(n):
+    time.sleep(n)
+    speak("what is my next task")
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
@@ -45,12 +51,13 @@ def wish():
 def send_message():
     r= sr.Recognizer() #recognizer is a class
     with sr.Microphone() as source:
-        print ("Listening...")
+        print ("speak your message...")
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
         # r.energy_threshold = 450
         audio = r.listen(source)
     try:
+        print("Hold On...")
         message = r.recognize_google(audio,language='en-in')
      # sending message in Whatsapp in India so using Indian dial code (+91)
         current_hour = datetime.datetime.now().strftime("%H")
@@ -62,9 +69,28 @@ def send_message():
  
      # error message
     except Exception as e: 
-        print(e)
+        # print(e)
         print("Error in sending the message")
-    
+
+def rapid_txt():
+    r= sr.Recognizer() #recognizer is a class
+    with sr.Microphone() as source:
+        print ("speak your message...")
+        r.pause_threshold = 1
+        r.adjust_for_ambient_noise(source)
+        # r.energy_threshold = 450
+        audio = r.listen(source)
+    try:
+        print("Hold On...")
+        txt = r.recognize_google(audio,language='en-in')
+        print("Message Sent!") #Prints success message in console
+ 
+     # error message
+    except Exception as e: 
+        # print(e)
+        print("Error in sending the message")
+        return "none"
+    return txt
 
 def takeCommand():
 
@@ -131,56 +157,73 @@ if __name__=="__main__":
             speak("According to wikipedia")
             print(results)
             speak(results)
+            delay(2)
 
         elif 'open unity hub' in query:
             speak("Ok boss!initiating OBS studio.")
             unity_dir = 'C:\\Program Files\\Unity Hub'
             os.startfile(os.path.join(unity_dir,'Unity hub'))
+            delay(2)
+            
           
 
         elif 'open my github profile' in query:
             speak("here is your github profile page")
             webbrowser.open('https://github.com/MrQuantum2022')
+            delay(2)
 
         elif 'open blender' in query:
             speak("ok boss!opening blender")
             blender_dir = 'C:\\Program Files\\Blender Foundation\\Blender 3.3'
             os.startfile(os.path.join(blender_dir,'blender'))
+            delay(2)
 
         elif 'initiate arduino' in query:
             speak("ok boss!initiating arduino")
             arduino_dir = 'C:\\private files\\Arduino'
             os.startfile(os.path.join(arduino_dir,'arduino'))
+            delay(2)
 
         elif 'open git bash' in query:
             speak("ok boss!initiating git bash")
             git_dir = 'C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Git'
             os.startfile(os.path.join(git_dir,'Git Bash'))
+            delay(2)
 
         elif 'open edge' in query:
             speak("ok boss!starting edge")
             bing_dir = 'C:\Program Files (x86)\Microsoft\Edge\Application'
             os.startfile(os.path.join(bing_dir,'msedge'))
+            delay(2)
 
         elif 'open octave' in query:
             speak ("ok boss! starting octave")
             octave_dir = 'C:\\Program Files\\GNU Octave\\Octave-7.3.0'
             os.startfile(os.path.join(octave_dir,"octave-launch"))
+            delay(2)
 
         elif 'open youtube' in query:
             speak ("what do you want to search...")
             search_title= ytCommand().lower()
             pwtyt.playonyt(search_title)
             speak(f"Opening Youtube and searching {search_title}")
+            delay(2)
 
         elif 'open insta' in query:
             speak("here is your insta profile")
             webbrowser.open('https://www.instagram.com/sub_atomic2004/')
+            delay(2)
 
         elif 'send message' in query:
             speak("Ok Boss!what do you want to send")
             print("speak your message...")
             send_message()
+            delay(2)
+
+        elif 'open krita' in query:
+            speak("ok sir! openinig krita,enjoy painting!")
+            print("Opening krita...")
+            delay(2)
             
 
         # MUSIC SECTION---------------------------
@@ -190,6 +233,7 @@ if __name__=="__main__":
             music_dir= 'C:\\Users\\TUSHAR\\Music\\songs'
             songs = os.listdir(music_dir)
             os.startfile(os.path.join(music_dir,'Rick Astley - Never Gonna Give You Up (Official Music Video).mp3'))
+            delay(2)
             
         
         elif 'drop the beat' in query:
@@ -198,6 +242,7 @@ if __name__=="__main__":
             songs = os.listdir(music_dir)
             random_song = random.choice(songs)
             os.startfile(os.path.join(music_dir,random_song))
+            delay(2)
             
 
         elif 'play music' in query:
@@ -208,12 +253,14 @@ if __name__=="__main__":
             os.startfile(os.path.join(music_dir,random_song))
             speak("Ok sir!Playing music")
             print(songs)
+            delay(2)
             
         elif'change the music' in query:
             music_dir= 'C:\\Users\\TUSHAR\\Music\\songs'
             songs = os.listdir(music_dir)
             random_song = random.choice(songs)
             os.startfile(os.path.join(music_dir,random_song))
+            delay(2)
 
             
         elif 'play motivating music' in query:
@@ -223,6 +270,7 @@ if __name__=="__main__":
             songs = os.listdir(music_dir)
             # random_song = random.choice(songs)
             os.startfile(os.path.join(music_dir,'Lil Nas X - STAR WALKIN (League of Legends Worlds Anthem).mp3'))
+            delay(2)
             
         elif 'play some refreshing music' in query:
             speak("Ok sir!this will help to boost your mood.")
@@ -230,6 +278,7 @@ if __name__=="__main__":
             songs = os.listdir(music_dir)
             # random_song = random.choice(songs)
             os.startfile(os.path.join(music_dir, 'Deva Deva - Brahmāstra Amitabh B, Ranbir, Alia Pritam, Arijit, Jonita.mp3'))
+            delay(2)
 
         
 
@@ -239,21 +288,25 @@ if __name__=="__main__":
             service_line=["at your service sir.","Yes Boss! i am listening."]
             service_str = random.choice(service_line)
             speak(service_str)
+            delay(2)
 
         elif query in intro_command:
             intro_lines=["My name is 'casual assistant for performing light activity',In short you can call me,CAPLA!","i am CAPLA ,casual assistant for performing light activity",]
             intro_str = random.choice(intro_lines)
             speak(intro_str)
+            delay(2)
 
 
         elif 'are you mad' in query:
             speak("No i am not mad, i guess you are smarter than me")
+            delay(2)
             
             
 
         elif 'the time' in query:
             present_time = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"the time is :{present_time}")
+            delay(2)
             
         
         elif 'stop' in query:
@@ -294,22 +347,27 @@ if __name__=="__main__":
         elif query in asking_command[6]:
             reply = reply_command[6]
             speak(reply)
+            
         elif query in asking_command[7]:
             reply = reply_command[7]
             speak(reply)
+            
         elif query in asking_command[8]:
             reply = reply_command[8]
             speak(reply)
+            
         elif query in asking_command[9]:
             reply = reply_command[9]
             speak(reply)
-
-        
-
+            
         elif 'thanks' in query:
             speak("You're welcome!i will always be serving you my best")
 
-        
+        elif 'send message racerturtle 0123' in query:
+            speak("Ok Boss!Intialising rapid text protocol")
+            txt = rapid_txt().lower()
+            pyautogui.typewrite(txt)
+            pyautogui.press("enter")
         # elif 'addition' in query:
             
         
