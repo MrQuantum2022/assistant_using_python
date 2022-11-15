@@ -27,7 +27,6 @@ def speak(audio):
     engine.runAndWait()
 
 def wish():
-    
     statement = ["programmer!","sir!","coder!","developer!","Tushar","Boss!"]
     greet_to = random.choice(statement)
     suggest_strs =["what can i help you with today.","What can i do for you.","How may i help you","what should be done today"]
@@ -36,9 +35,7 @@ def wish():
     hour = int (datetime.datetime.now().hour)
     if hour >= 0 and hour <12:
         print("Assitant status:Online")
-        
-        speak("Good Morning"+ greet_to + suggest )
-        
+        speak("Good Morning"+ greet_to + suggest )   
 
     elif hour >=12 and hour <18:
         print("Assitant status:Online")
@@ -135,9 +132,9 @@ def ytCommand():
     return search_title
 
 if __name__=="__main__":
-    
-    
+
     wish()
+
     intro_command=["what is your name","tell me about yourself","introduce yourself","what's your name","what should i call you"]
     asking_command = ["how are you","how's your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer"]
 
@@ -148,10 +145,8 @@ if __name__=="__main__":
     while True:
         query = takeCommand().lower()
 
-
         #task section-------------------
         if 'wikipedia' in query:
-            
             speak("Searching...")
             results = wikipedia.summary(query,sentences = 1)#get the page info that was entered in query by user 
             speak("According to wikipedia")
@@ -165,8 +160,6 @@ if __name__=="__main__":
             os.startfile(os.path.join(unity_dir,'Unity hub'))
             delay(2)
             
-          
-
         elif 'open my github profile' in query:
             speak("here is your github profile page")
             webbrowser.open('https://github.com/MrQuantum2022')
@@ -225,7 +218,6 @@ if __name__=="__main__":
             print("Opening krita...")
             delay(2)
             
-
         # MUSIC SECTION---------------------------
 
         elif 'play my favourite song' in query:
@@ -235,7 +227,6 @@ if __name__=="__main__":
             os.startfile(os.path.join(music_dir,'Rick Astley - Never Gonna Give You Up (Official Music Video).mp3'))
             delay(2)
             
-        
         elif 'drop the beat' in query:
             speak("Sure sir lets rock and roll!")
             music_dir= 'C:\\Users\\TUSHAR\\Music\\rocking_music'
@@ -244,7 +235,6 @@ if __name__=="__main__":
             os.startfile(os.path.join(music_dir,random_song))
             delay(2)
             
-
         elif 'play music' in query:
             
             music_dir= 'C:\\Users\\TUSHAR\\Music\\songs'
@@ -261,8 +251,7 @@ if __name__=="__main__":
             random_song = random.choice(songs)
             os.startfile(os.path.join(music_dir,random_song))
             delay(2)
-
-            
+    
         elif 'play motivating music' in query:
             
             speak("Ok sir!playing your's favourite")
@@ -280,35 +269,26 @@ if __name__=="__main__":
             os.startfile(os.path.join(music_dir, 'Deva Deva - Brahmāstra Amitabh B, Ranbir, Alia Pritam, Arijit, Jonita.mp3'))
             delay(2)
 
-        
-
         #dialogue section----------------
 
         elif 'are you there' in query:
             service_line=["at your service sir.","Yes Boss! i am listening."]
             service_str = random.choice(service_line)
             speak(service_str)
-            delay(2)
-
+            
         elif query in intro_command:
             intro_lines=["My name is 'casual assistant for performing light activity',In short you can call me,CAPLA!","i am CAPLA ,casual assistant for performing light activity",]
             intro_str = random.choice(intro_lines)
             speak(intro_str)
-            delay(2)
-
-
+            
         elif 'are you mad' in query:
             speak("No i am not mad, i guess you are smarter than me")
-            delay(2)
             
-            
-
         elif 'the time' in query:
             present_time = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"the time is :{present_time}")
             delay(2)
             
-        
         elif 'stop' in query:
             speak("Sure Sir!going offline")
             speak("Have a nice day")
@@ -377,7 +357,7 @@ if __name__=="__main__":
                 pyautogui.typewrite(txt)
                 pyautogui.press("enter")
                 count = count +1
-        # elif 'addition' in query:
+        
             
         
 
