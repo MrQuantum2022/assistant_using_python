@@ -20,8 +20,8 @@ engine.setProperty('volume',1.0)
 # FUNCTIONS------------------------------------
 
 def delay(n):
-    speak("what is my next task")
     time.sleep(n)
+    speak("what is my next task")
     
 def speak(audio):
     engine.say(audio)
