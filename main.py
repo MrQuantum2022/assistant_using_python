@@ -148,7 +148,7 @@ if __name__=="__main__":
         #task section-------------------
         if 'wikipedia' in query:
             speak("Searching...")
-            results = wikipedia.summary(query,sentences = 1)#get the page info that was entered in query by user 
+            results = wikipedia.summary(query,sentences = 3)#get the page info that was entered in query by user 
             speak("According to wikipedia")
             print(results)
             speak(results)
