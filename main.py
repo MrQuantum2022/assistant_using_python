@@ -282,7 +282,7 @@ if __name__=="__main__":
             speak(service_str)
             
         elif query in intro_command:
-            intro_lines=["My name is 'casual assistant for performing light activity',In short you can call me,CAPLA!","i am CAPLA ,casual assistant for performing light activity",]
+            intro_lines=["My name is 'casual assistant for performing light activity',In short you can call me,CAPLA!","i am CAPLA ,casual assistant for performing light activity"]
             intro_str = random.choice(intro_lines)
             speak(intro_str)
             

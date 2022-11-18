@@ -1,0 +1,40 @@
+I want to introduce with my assistant CAPLA (casual assistant for
+performing light weight tasks
+
+Here are some functions that i have added in my asssitant,i will 
+add more and more task later:-
+
+1.WISH function add (capla will greet you everytime you run it)
+
+2.WIKIPEDIA SEARCH function (you can ask capla about anything from wikipedia
+	you just have to say wikipedia and ask your query)
+
+3.OPEN function(you can open your software by just saying to CAPLA just say open 
+	and eneter your software name)
+	here are some softwares that are pre-programmed into capla:-
+	NOTE:-YOU MUST HAVE INSTALLED THE SOFTWARE INTO YOUR PC AND MAKE SURE
+	TO ENETER THE RIGHT PATH INTO THE CODE OF CAPLA 
+	1.OPEN UNITY HUB
+	2.OPEN MY GITHUB PROFILE
+	3.OPEN BLENDER
+	4.INITIATE ARDUINO
+	5.OPEN GIT BASH
+	6.OPEN EDGE( I AM USING EDGE YOU CAN YOU CHANGE IT TO WHATEVER YOU WANT IN THE CODE
+	7.OPEN YOUTUBE
+	8.OPEN INSTA
+	9.OPEN WHATSAPP
+	10.OPEN KRITA
+
+4.SEND MESSAGES 
+
+5.PLAY MUSIC(capla can play your favourite music or whatever you want to play
+	or she can play a random music as i use random module)
+	Here are some command to play music:
+	1.play music (play random music)	
+	2.play my favourite song(you add the name of the song just see my code 
+	you will know everything)
+	3.drop the beat (play the rock music folder that i have created you can
+	make your own folder and enter it in the code 
+
+6.DROP THE BEAT (its my personal function that i have added to make variety 
+	of outputs -its basically play my riock music folder:
