@@ -222,6 +222,11 @@ if __name__=="__main__":
             speak("ok!have a nice chat.")
             webbrowser.open('https://web.whatsapp.com/')
             delay(2) 
+
+        elif 'open my restaurant website' in query:
+            speak ("Ok sir!taking you to restaurant site")
+            webbrowser.open('https://mrquantum2022.github.io/reataurant_website/')
+            delay(2)
             
         # MUSIC SECTION---------------------------
 
@@ -362,6 +367,8 @@ if __name__=="__main__":
                 pyautogui.typewrite(txt)
                 pyautogui.press("enter")
                 count = count +1
+        
+        
         
             
         
