@@ -139,9 +139,10 @@ if __name__=="__main__":
     wish()
 
     intro_command=["what is your name","tell me about yourself","introduce yourself","what's your name","what should i call you"]
-    asking_command = ["how are you","how's your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer"]
+    asking_command = ["how are you","how's your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer","hi kapla"]
 
-    reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!"]
+    reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as file name main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!","Hello Boss!"]
+
     while True:
         query = takeCommand().lower()
 
@@ -262,7 +263,7 @@ if __name__=="__main__":
             os.startfile(os.path.join(music_dir,random_song))
             delay(2)
     
-        elif 'play motivating music' in query:
+        elif 'motivation' in query:
             
             speak("Ok sir!playing your's favourite")
             music_dir= 'C:\\Users\\TUSHAR\\Music\\songs'
@@ -271,7 +272,7 @@ if __name__=="__main__":
             os.startfile(os.path.join(music_dir,'Lil Nas X - STAR WALKIN (League of Legends Worlds Anthem).mp3'))
             delay(2)
             
-        elif 'play some refreshing music' in query:
+        elif 'refresh' in query:
             speak("Ok sir!this will help to boost your mood.")
             music_dir= 'C:\\Users\\TUSHAR\\Music\\songs'
             songs = os.listdir(music_dir)
@@ -315,7 +316,6 @@ if __name__=="__main__":
             speak("hey mind your language i am not that kind of assistant")
             speak("Discussion  abort!")
             break
-        
         elif query in asking_command[0]:
             reply = reply_command[0]
             speak(reply)
@@ -337,17 +337,17 @@ if __name__=="__main__":
         elif query in asking_command[6]:
             reply = reply_command[6]
             speak(reply)
-            
         elif query in asking_command[7]:
             reply = reply_command[7]
             speak(reply)
-            
         elif query in asking_command[8]:
             reply = reply_command[8]
             speak(reply)
-            
         elif query in asking_command[9]:
             reply = reply_command[9]
+            speak(reply)
+        elif query in asking_command[10]:
+            reply = reply_command[10]
             speak(reply)
             
         elif 'thanks' in query:
