@@ -27,6 +27,10 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+def wait_function(n):
+    time.sleep(n)
+    speak(f"sure sir!see you later")
+
 def wish():
     statement = ["programmer!","sir!","coder!","developer!","Tushar","Boss!"]
     greet_to = random.choice(statement)
@@ -83,7 +87,7 @@ def rapid_txt():
     try:
         print("Hold On...")
         txt = r.recognize_google(audio,language='en-in')
-        print("Message Sent!") #Prints success message in console
+        print("Sending Message") #Prints success message in console
  
      # error message
     except Exception as e: 
@@ -139,7 +143,7 @@ if __name__=="__main__":
     wish()
 
     intro_command=["what is your name","tell me about yourself","introduce yourself","what's your name","what should i call you"]
-    asking_command = ["how are you","how's your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer","hi kapla"]
+    asking_command = ["how are you","how is your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer","hello e"]
 
     reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as file name main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!","Hello Boss!"]
 
@@ -353,20 +357,50 @@ if __name__=="__main__":
         elif 'thanks' in query:
             speak("You're welcome!i will always be serving you my best")
 
+        #special functions------------------------------------------------
+
         elif 'rapid text' in query:
             speak("Ok Boss!Initiating rapid text mode")
             speak("what do you want to send...")
             txt = rapid_txt().lower()
+            print(f"your message is:{txt}")
             speak("how many times you want to send?")
             numOfText = rapid_txt().lower()
-            time.sleep(2)
             print(f"no of send:{numOfText}")
-            
+            speak("Sending in")
+            speak("3")
+            speak("2")
+            speak("1")
+            print("Message sent!")
+
             count = 0
             while count <= 9:
                 pyautogui.typewrite(txt)
                 pyautogui.press("enter")
                 count = count +1
+
+        elif 'push my work to github repository' in query:
+            speak("Ok Boss!uploading your work to your assitant github repository")
+            speak("open your git bash into the folder which you want to push")
+            time.sleep(10)
+            print(f"Executing Ist stage:---")
+            pyautogui.typewrite("git add -A")
+            pyautogui.press("enter")
+            time.sleep(3)
+            speak("what name would you like to give your commit")
+            commit_name = takeCommand().lower()
+            speak(f"ok!commit as {commit_name}")
+            pyautogui.typewrite(f"git commit -m \"{commit_name}\"")
+            pyautogui.press("enter")
+            speak("commit done! uploading your work")
+            pyautogui.typewrite("git push -u origin main")
+            pyautogui.press("enter")
+            speak("Uploaded!")
+
+
+
+            
+
         
         
         
