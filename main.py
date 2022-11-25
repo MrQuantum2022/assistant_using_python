@@ -379,7 +379,7 @@ if __name__=="__main__":
                 pyautogui.press("enter")
                 count = count +1
 
-        elif 'push my work to github repository' in query:
+        elif 'save my work to github' in query:
             speak("Ok Boss!uploading your work to your assitant github repository")
             speak("open your git bash into the folder which you want to push")
             time.sleep(10)
@@ -396,6 +396,16 @@ if __name__=="__main__":
             pyautogui.typewrite("git push -u origin main")
             pyautogui.press("enter")
             speak("Uploaded!")
+
+        elif 'wait' in query:
+            speak("for how many seconds?")
+            wait_time = takeCommand().lower()
+            wait_time = int(wait_time)
+            speak(f"See you after {wait_time} seconds")
+            print(f"See you after {wait_time} seconds")
+            time.sleep(wait_time)
+
+        
 
 
 
