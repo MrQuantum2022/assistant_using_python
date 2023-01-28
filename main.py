@@ -9,7 +9,6 @@ import os
 import pyautogui
 import time
 
-
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 
@@ -143,7 +142,7 @@ if __name__=="__main__":
     wish()
 
     intro_command=["what is your name","tell me about yourself","introduce yourself","what's your name","what should i call you"]
-    asking_command = ["how are you","how is your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer","hello e"]
+    asking_command = ["how are you","how is your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer","hello"]
 
     reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as file name main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!","Hello Boss!"]
 
@@ -152,12 +151,21 @@ if __name__=="__main__":
 
         #task section-------------------
         if 'wikipedia' in query:
+            i = 3
+            new_query=query.replace('wikipedia',' ')
             speak("Searching...")
-            results = wikipedia.summary(query,sentences = 3)#get the page info that was entered in query by user 
+            results = wikipedia.summary(new_query,sentences = i)#get the page info that was entered in query by user 
             speak("According to wikipedia")
             print(results)
             speak(results)
-            delay(2)
+            more_query =takeCommand().lower()
+
+            if 'tell more' in more_query:
+                results = wikipedia.summary(new_query,sentences = i+i)
+                speak('OK!')
+                print(results)
+                speak(results)
+                delay(2)
 
         elif 'open unity hub' in query:
             speak("Ok boss!initiating OBS studio.")
@@ -318,44 +326,11 @@ if __name__=="__main__":
         
         elif 'f***' in query:
             speak("hey mind your language i am not that kind of assistant")
-            speak("Discussion  abort!")
+            speak("Discussion abort!")
             break
-        elif query in asking_command[0]:
-            reply = reply_command[0]
-            speak(reply)
-        elif query in asking_command[1]:
-            reply = reply_command[1]
-            speak(reply)
-        elif query in asking_command[2]:
-            reply = reply_command[2]
-            speak(reply)
-        elif query in asking_command[3]:
-            reply = reply_command[3]
-            speak(reply)
-        elif query in asking_command[4]:
-            reply = reply_command[4]
-            speak(reply)
-        elif query in asking_command[5]:
-            reply = reply_command[5]
-            speak(reply)
-        elif query in asking_command[6]:
-            reply = reply_command[6]
-            speak(reply)
-        elif query in asking_command[7]:
-            reply = reply_command[7]
-            speak(reply)
-        elif query in asking_command[8]:
-            reply = reply_command[8]
-            speak(reply)
-        elif query in asking_command[9]:
-            reply = reply_command[9]
-            speak(reply)
-        elif query in asking_command[10]:
-            reply = reply_command[10]
-            speak(reply)
             
         elif 'thanks' in query:
-            speak("You're welcome!i will always be serving you my best")
+            speak("You're welcome!i will always serve you with my best")
 
         #special functions------------------------------------------------
 
@@ -379,17 +354,18 @@ if __name__=="__main__":
                 pyautogui.press("enter")
                 count = count +1
 
-        elif 'save my work to github' in query:
+        elif 'save my work online' in query:
             speak("Ok Boss!uploading your work to your assitant github repository")
             speak("open your git bash into the folder which you want to push")
             time.sleep(10)
-            print(f"Executing Ist stage:---")
+            speak("Executing Ist stage:---")
+            print("Executing Ist stage:---")
             pyautogui.typewrite("git add -A")
             pyautogui.press("enter")
             time.sleep(3)
             speak("what name would you like to give your commit")
-            commit_name = takeCommand().lower()
-            speak(f"ok!commit as {commit_name}")
+            commit_name = takeCommand()
+            speak(f"ok!commiting as {commit_name}")
             pyautogui.typewrite(f"git commit -m \"{commit_name}\"")
             pyautogui.press("enter")
             speak("commit done! uploading your work")
@@ -399,11 +375,18 @@ if __name__=="__main__":
 
         elif 'wait' in query:
             speak("for how many seconds?")
-            wait_time = takeCommand().lower()
-            wait_time = int(wait_time)
+            wait_time = int(input("Enter the time:"))
             speak(f"See you after {wait_time} seconds")
             print(f"See you after {wait_time} seconds")
             time.sleep(wait_time)
+            speak('Time\'s up.I am back to work')
+
+
+        for i in range(len(asking_command)):
+            if asking_command[i] in query:
+                reply = reply_command[i]
+                speak(reply)
+                delay(2)    
 
         
 
