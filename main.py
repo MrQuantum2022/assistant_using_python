@@ -50,27 +50,57 @@ def wish():
         speak("Good Evening"+ greet_to + suggest )
 
 def send_message():
+    speak('whom do you want to send message: ')
+    contact_name = takeCommand().lower()
+    fcon = ''
+    contact_no = ''
+    with open('contact_name.txt','r') as f:
+        names_str = f.read()
+        contact_name_list= names_str.split('\n')
+        
+    with open('contact_no.txt','r') as f:
+        no_str = f.read()
+        contact_no_list= no_str.split('\n')
+
+    for i in range(len(contact_name_list)):
+        if contact_name_list[i] in contact_name:
+            fcon= contact_name_list[i]
+            print(fcon)
+            contact_no = contact_no_list[i]
+            print(contact_no)
+
+    assert fcon in contact_name
+
     r= sr.Recognizer() #recognizer is a class
     with sr.Microphone() as source:
+        speak(f"Ok Boss!what do you want to send? {fcon}")
         print ("speak your message...")
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
         # r.energy_threshold = 450
         audio = r.listen(source)
+
     try:
         print("Hold On...")
         message = r.recognize_google(audio,language='en-in')
-        speak(f"Sending {message} to home...")
+        print(f'reciever\'s name: {fcon}')
+        print(f'reciever\'s no.: {contact_no}')
+        speak(f"Sending {message} to {fcon}...")
 
      # sending message in Whatsapp in India so using Indian dial code (+91)
         current_hour = datetime.datetime.now().strftime("%H")
         current_min = datetime.datetime.now().strftime("%M")
         current_hour = int(current_hour)
-        current_min = int(current_min)+2
-        pwtyt.sendwhatmsg("+919953407271",message,current_hour,current_min)
-        print("Message Sent!") #Prints success message in console
+        current_min = int(current_min)+1
+
+        pwtyt.sendwhatmsg(contact_no,message,current_hour,current_min)
+        speak(f'Message has sent to {contact_name}')
+        print("Message Sent!" )
  
      # error message
+    except AssertionError as a:
+        print(a)
+        print("Contact not found")
     except Exception as e: 
         print(e)
         print("Error in sending the message")
@@ -142,9 +172,16 @@ if __name__=="__main__":
     wish()
 
     intro_command=["what is your name","tell me about yourself","introduce yourself","what's your name","what should i call you"]
-    asking_command = ["how are you","how is your mood","what should we do today","are you single","do you have feelings","i love you","where do you live","what is your birthday","do you drink","duffer","hello"]
+    intro_lines=["My name is 'casual assistant for performing light activity',In short you can call me,CAPLA!","i am CAPLA ,casual assistant for performing light activity"]
 
-    reply_command = ["i am fine,boss!","as always,plane and simple","you can do anything just tell me to start that","i am all alone in my folder,can you save me in your heart.","i can understand your feelings so i guess i have some","Oh!thats nice but only our souls can be one because our bodies have different configurations","technically in my folder name assistant as file name main.py","i dont know but you can set in it in my code","Oops!that will make a short circuit in my system.","Hey! how dare you call me duffer,Break Up!","Hello Boss!"]
+     
+    with open("questions.txt",'r') as file:
+        ask= file.read()
+        asking_command = ask.split('\n')
+
+    with open("replies.txt",'r') as file:
+        reply_str= file.read()
+        reply_command = reply_str.split('\n')
 
     while True:
         query = takeCommand().lower()
@@ -220,9 +257,7 @@ if __name__=="__main__":
             webbrowser.open('https://www.instagram.com/sub_atomic2004/')
             delay(2)
 
-        elif 'send message to home' in query:
-            speak("Ok Boss!what do you want to send")
-            print("speak your message...")
+        elif 'send message' in query:
             send_message()
             delay(2)
 
@@ -284,7 +319,7 @@ if __name__=="__main__":
             os.startfile(os.path.join(music_dir,'Lil Nas X - STAR WALKIN (League of Legends Worlds Anthem).mp3'))
             delay(2)
             
-        elif 'refresh' in query:
+        elif 'refreshing music' in query:
             speak("Ok sir!this will help to boost your mood.")
             music_dir= 'C:\\Users\\TUSHAR\\Music\\songs'
             songs = os.listdir(music_dir)
@@ -300,27 +335,17 @@ if __name__=="__main__":
             speak(service_str)
             
         elif query in intro_command:
-            intro_lines=["My name is 'casual assistant for performing light activity',In short you can call me,CAPLA!","i am CAPLA ,casual assistant for performing light activity"]
             intro_str = random.choice(intro_lines)
             speak(intro_str)
-            
-        elif 'are you mad' in query:
-            speak("No i am not mad, i guess you are smarter than me")
             
         elif 'the time' in query:
             present_time = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"the time is :{present_time}")
             delay(2)
             
-        elif 'stop' in query:
+        elif 'stop' in query or 'enough' in query :
             speak("Sure Sir!going offline")
             speak("Have a nice day")
-            print("Assitant status:Offline")
-            break
-
-        elif 'enough' in query:
-            speak("Sure Sir!going offline")
-            speak("Have a nice day.")
             print("Assitant status:Offline")
             break
         
@@ -340,7 +365,7 @@ if __name__=="__main__":
             txt = rapid_txt().lower()
             print(f"your message is:{txt}")
             speak("how many times you want to send?")
-            numOfText = rapid_txt().lower()
+            numOfText= int(input('no of send: '))
             print(f"no of send:{numOfText}")
             speak("Sending in")
             speak("3")
@@ -349,7 +374,7 @@ if __name__=="__main__":
             print("Message sent!")
 
             count = 0
-            while count <= 9:
+            while count <= numOfText:
                 pyautogui.typewrite(txt)
                 pyautogui.press("enter")
                 count = count +1
@@ -387,25 +412,4 @@ if __name__=="__main__":
                 reply = reply_command[i]
                 speak(reply)
                 delay(2)    
-
-        
-
-
-
-            
-
-        
-        
-        
-            
-        
-
-        
-
-
-
-
-    
-    
-    
-    
+                break
